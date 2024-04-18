@@ -47,14 +47,22 @@ const MenuItems = () => {
 
         const renderItem = ({item}) => <Item name={item.name} price={item.price} />;
 
+        // When using SectionList Component
+        /*
+        const renderSectionHeader = ({section: {title}}) => (
+        <Text style={menuStyles.sectionHeader}>{title}</Text>
+        )
+        */
+
     return (
         <View style={menuStyles.container}>       
         <FlatList 
-        data={menuItemsToDisplay}
+                data={menuItemsToDisplay} //<SectionList sections ={menuItemsToDisplay} renderItem={renderItem} renderSectionHeader={renderSectionHeader}/>
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         ItemSeparatorComponent={Separator}
-        ListHeaderComponent={Header}>
+        ListHeaderComponent={Header}
+        ListFooterComponent={Footer}>
         </FlatList>     
         </View>
     );
